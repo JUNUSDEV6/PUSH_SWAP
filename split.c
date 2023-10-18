@@ -6,18 +6,18 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/16 15:54:23 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:41:48 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-#include <stdbool.h>
 
 static int	cnt_words(char *str, char sep)
 {
 	int		cnt;
 	bool	inside_word;
 	
+	cnt = 0;
 	while(*str)
 	{
 		inside_word = false;
@@ -30,7 +30,7 @@ static int	cnt_words(char *str, char sep)
 				inside_word = true;
 				cnt++;
 			}	
-			cnt++;	
+			str++;	
 		}
 	}
 	return (cnt);
@@ -47,13 +47,13 @@ static char	*get_next_words(char *str, char sep)
 	i = 0;
 	while (str[w_sp] == sep)
 		w_sp++;
-	while (str[w_sp] != sep)
+	while ((str[len + w_sp] != sep) && str[len + w_sp])
 		len++;
-	next_str = malloc((size_t) lensizeof(char *));
+	next_str = malloc((size_t)len * sizeof(char) + 1);
 	if (!next_str)
 		return (NULL);
-	while (str[len + w_sp] && *str)
-		next_str[i++] = str[w_sp];
+	while ((str[w_sp] != sep) && str[w_sp])
+		next_str[i++] = str[w_sp++];
 	next_str[i] = '\0';
 	return (next_str);
 	
