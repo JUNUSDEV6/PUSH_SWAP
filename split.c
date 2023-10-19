@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/18 12:41:48 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:02:35 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,26 @@ char	**ft_split(char *str, char sep)
 	}
 	v_str[i] = NULL;
 	return (v_str);
+}
+
+// main test for split;
+int	main(int argc, char **argv)
+{
+	int i = 0;
+	argv = ft_split("12 56 89 96", 32);
+	while (argv[i])
+	{
+		printf("pointer :%p , %s", argv[i], argv[i]);
+		i++;
+		fflush(stdout);
+	}
+
+	i = 0;
+	while (argv[i])
+	{
+		printf("pointer being freed %p\n\n", argv[i]);
+		fflush(stdout);
+		free(argv[i++]);
+	}
+	free(argv);
 }

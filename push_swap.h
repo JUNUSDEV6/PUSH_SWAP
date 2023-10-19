@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:06:30 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/10/18 10:36:30 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:16:28 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,7 @@ typedef struct s_stack_node
 char			**ft_split(char *str, char sep);
 static int		cnt_words(char *str, char sep);
 static char		*get_next_words(char *str, char sep);
+/***** error *****/
+void	error_free(t_stack_node **a, char **argv, bool flag);
+int	error_repition(t_stack_node *a, int nbr);
 #endif
