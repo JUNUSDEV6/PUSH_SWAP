@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:06:30 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/10/20 14:17:52 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:55:35 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ int				error_repition(t_stack_node *a, int nbr);
 /*****---node---*****/
 t_stack_node	*find_last_node(t_stack_node *head);
 void			append_node(t_stack_node **stack, int nbr);
+int				ft_atol(const char *str);
 #endif

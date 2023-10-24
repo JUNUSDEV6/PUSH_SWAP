@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:08:29 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/19 13:14:50 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:59:30 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_free(t_stack_node **a, char **argv, bool flag_bool)
 {
-	exit(1);
+	exit(2);
 }
 
 int	error_repition(t_stack_node *a, int nbr)
@@ -23,8 +23,8 @@ int	error_repition(t_stack_node *a, int nbr)
 		return (0);
 	while (a)
 	{
-		if (a == nbr)
-			return (0);
+		if (a->value == nbr)
+			return (1);
 		a = a->next;
 	}
 	return (0);
