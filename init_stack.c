@@ -6,12 +6,15 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/24 13:55:50 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/08 11:30:34 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+	function to find the last node and return the value
+*/
 t_stack_node *find_last_node(t_stack_node *head)
 {
 	if (head == NULL)
@@ -20,7 +23,11 @@ t_stack_node *find_last_node(t_stack_node *head)
 		head = head->next;
 	return (head);
 }
-
+/*
+	create a node with the value 
+	& pointe the node *a in the main to this new *node
+	& search for the last node and append
+*/
 void	append_node(t_stack_node **stack, int nbr)
 {
 	t_stack_node	*node;
@@ -46,7 +53,11 @@ void	append_node(t_stack_node **stack, int nbr)
 	}
 			
 }
-
+/*
+	convert to a long 
+	& check the error
+	& initalize the node
+*/
 void	init_stack(t_stack_node **a, char **argv, bool flag)
 {
 	long	nbr;
@@ -68,7 +79,7 @@ int	main()
 	t_stack_node	*a;
 
 	a = NULL;
-	char	*v[5] = {v[0]="\0", v[1] = "42", v[2] = "1337", v[3]= "-21", v[4]= NULL};
+	char	*v[5] = {v[0]="25", v[1] = "42", v[2] = "1337", v[3]= "-21", v[4]= NULL};
 	init_stack(&a, v+1, false);
 	while (a)
 	{

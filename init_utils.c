@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/20 13:45:56 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:44:44 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	ft_atol(const char *str)
 	long	rlt;
 	char	sign;
 
+	rlt = 0;
 	sign = 1;
-	while (*str == 32 || (*str >= 9 || *str <= 13))
+	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == 45 || *str == 43)
 	{
@@ -26,7 +27,7 @@ int	ft_atol(const char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str >= 48 || *str <= 57)
+	while (*str >= 48 && *str <= 57)
 	{
 		rlt = rlt * 10 + *str - 48;
 		str++;
