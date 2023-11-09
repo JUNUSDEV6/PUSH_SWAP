@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/11/08 16:10:33 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/09 15:06:43 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 		argv++;
 	}
 }
-
+/*
 int	main()
 {
 	t_stack_node	*a;
@@ -87,3 +87,4 @@ int	main()
 		a = a->next;
 	}
 }
+*/

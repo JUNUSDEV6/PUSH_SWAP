@@ -6,12 +6,12 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:06:26 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/07 16:37:58 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/09 15:08:22 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -25,3 +25,4 @@ int	main(int argc, char **argv)
 	else if (2 == argv)
 		argv = ft_split(argv[1], ' ');
 }
+*/
