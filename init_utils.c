@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/11/07 16:44:44 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/11 16:36:55 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,19 @@ int	ft_atol(const char *str)
 		str++;
 	}
 	return (rlt * sign);
+}
+
+int	ft_stacklen(t_stack_node *stack)
+{
+	int	i;
+
+	i = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

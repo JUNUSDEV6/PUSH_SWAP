@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:09:32 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/09 16:29:42 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/11 17:30:40 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ t_stack_node *find_last_node(t_stack_node *head)
 
 static void	rotate(t_stack_node **stack)
 {
+    int             len;
 	t_stack_node	*last_node;
 
-	if (!*stack || !stack)
+	len = ft_stacklen(*stack);
+	if (!*stack || !stack || len == 1)
 		return ;
 	last_node = find_last_node(*stack);
 	last_node->next = *stack;
@@ -37,24 +39,35 @@ static void	rotate(t_stack_node **stack)
 
 static void	rev_rotate(t_stack_node **stack)
 {
-	if (!*stack || !(*stack)->next)
-        return;
+	int				len;
+    t_stack_node	*first_node = *stack;
+    t_stack_node	*last_node = find_last_node(*stack);
 
-    t_stack_node *first_node = *stack;
-    t_stack_node *last_node = find_last_node(*stack);
-
-    // Détache le dernier nœud de la pile actuelle
+	len = ft_stacklen(*stack);
+	if (!*stack || !(*stack)->next || len = 1)
+        return ;
     last_node->prev->next = NULL;
-
-    // Met à jour les pointeurs pour le dernier nœud
     last_node->prev = NULL;
     last_node->next = first_node;
-
-    // Met à jour les pointeurs pour le premier nœud
     first_node->prev = last_node;
-
-    // Met à jour le pointeur de la pile
     *stack = last_node;
+}
+
+static void swap(t_stack_node **stack)
+{
+    int len;
+
+    len = ft_stacklen(*stack);
+    if (!*stack || !stack || len == 1)
+        return ;
+    (*stack) = (*stack)->next;
+    (*stack)->prev->prev = (*stack);
+    (*stack)->prev->next = (*stack)->next;
+    if ((*stack)->next)
+        (*stack)->next->prev = (*stack)->prev;
+    (*stack)->next = (*stack)->prev;
+    (*stack)->prev = NULL; 
+
 }
 
 static void	push(t_stack_node **src, t_stack_node **dest)
