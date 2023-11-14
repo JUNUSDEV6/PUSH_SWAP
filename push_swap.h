@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:06:30 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/11 16:37:30 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/14 11:41:48 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 typedef struct s_stack_node
 {
 	int					value;
+	int					index;
+	int					push_cost;
+	bool				above_m;
+	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
