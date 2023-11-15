@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:09:32 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/11 17:30:40 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/15 15:28:32 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack_node *find_last_node(t_stack_node *head)
 	return (head);
 }
 
-static void	rotate(t_stack_node **stack)
+void	rotate(t_stack_node **stack)
 {
     int             len;
 	t_stack_node	*last_node;
@@ -37,7 +37,7 @@ static void	rotate(t_stack_node **stack)
 	last_node->next->prev = last_node;
 }
 
-static void	rev_rotate(t_stack_node **stack)
+void	rev_rotate(t_stack_node **stack)
 {
 	int				len;
     t_stack_node	*first_node = *stack;
@@ -53,7 +53,7 @@ static void	rev_rotate(t_stack_node **stack)
     *stack = last_node;
 }
 
-static void swap(t_stack_node **stack)
+void swap(t_stack_node **stack)
 {
     int len;
 
@@ -70,7 +70,7 @@ static void swap(t_stack_node **stack)
 
 }
 
-static void	push(t_stack_node **src, t_stack_node **dest)
+void	push(t_stack_node **src, t_stack_node **dest)
 {
 	t_stack_node	*node_push;
 
