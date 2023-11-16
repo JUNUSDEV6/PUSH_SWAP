@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/15 17:01:27 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/16 13:17:38 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,22 @@ void	target_smaller(t_stack_node *a, t_stack_node *b)
 }
 void	cost_operation(t_stack_node *a, t_stack_node *b)
 {
-	
+	int	len_a;
+	int	len_b;
+
+	len_a = ft_stacklen(a);
+	len_b = ft_stacklen(b);
+	while (a)
+	{
+		a->push_cost = a->index;
+		if (!(a->median))
+			a->push_cost = len_a - (a->index);
+		if (a->target_node->median)
+			a->push_cost += a->target_node->index;
+		else
+			a->push_cost = len_b - (a->target_node->index);
+		a = a->next;
+	}
 }
 
 void	algo_a_to_b(t_stack_node *a, t_stack_node *b)
