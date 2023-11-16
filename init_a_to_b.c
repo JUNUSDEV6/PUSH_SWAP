@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/16 13:17:38 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/11/16 13:36:59 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,23 @@ void	cost_operation(t_stack_node *a, t_stack_node *b)
 	}
 }
 
+void	set_cheapest(t_stack_node *stack)
+{
+	long			cheapest_value;
+	t_stack_node	*cheapest_node;
+
+	cheapest_value = LONG_MAX;
+	while (stack)
+	{
+		if (stack->push_cost < cheapest_value)
+		{
+			cheapest_value = stack->push_cost;
+			cheapest_node = stack;
+		}
+		stack = stack->next;
+	}
+	cheapest_node->cheapest = true;
+}
 void	algo_a_to_b(t_stack_node *a, t_stack_node *b)
 {
 	current_index(a);
