@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/11/09 15:06:43 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/12/14 14:11:06 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /*
 	function to find the last node and return the value

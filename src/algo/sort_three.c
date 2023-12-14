@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 15:44:17 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/10/19 13:07:59 by yohanafi         ###   ########.fr       */
+/*   Created: 2023/11/14 14:52:45 by youneshanaf       #+#    #+#             */
+/*   Updated: 2023/12/14 14:10:43 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_three(t_stack_node **a)
 {
-	
+	t_stack_node	*node_big;
+
+	node_big = find_big(*a);
+	if (*a == node_big)
+		ra(a, false);
+	else ((*a)->next == node_big)
+		rra(a, false);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, false);
 }

@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/11/14 14:46:48 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/12/14 14:11:10 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	ft_atol(const char *str)
 {

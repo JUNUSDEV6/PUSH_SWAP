@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/16 13:36:59 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2023/12/14 14:10:56 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	current_index(t_stack_node *a)
 {
@@ -51,7 +51,7 @@ void	target_smaller(t_stack_node *a, t_stack_node *b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-			a->target_node = find_big(a);
+			a->target_node = find_big(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
@@ -101,28 +101,4 @@ void	algo_a_to_b(t_stack_node *a, t_stack_node *b)
 	target_smaller(a, b);
 	cost_operation(a, b);
 	set_cheapest(a);
-}
-
-void	sort_stacks(t_stack_node **a, t_stack_node **b)
-{
-	int	len_a;
-
-	len_a = ft_stacklen(*a);
-	if (len_a-- > 3 && !stack_sorted(*a))
-		pb(a, b, false);
-	if (len_a-- > 3 && !stack_sorted(*a))
-		pb(a, b, false);
-	while (len_a-- > 3 && !stack_sorted(*a))
-	{
-		algo_a_to_b(a, b);
-		move_a_to_b(a, b);
-	}
-	sort_three(a);
-	while (b)
-	{
-		algo_b_to_a(a, b);
-		move_b_to_a(b);
-	}
-	find_index(a);
-	min_on_top(a);
 }

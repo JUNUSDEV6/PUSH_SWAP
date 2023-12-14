@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_b.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 15:10:30 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/13 15:59:17 by youneshanaf      ###   ########.fr       */
+/*   Created: 2023/10/19 13:08:29 by yohanafi          #+#    #+#             */
+/*   Updated: 2023/12/04 16:17:06 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	sb(t_stack_node **b)
+void	error_free(t_stack_node **a, char **argv, bool flag_bool)
 {
-	swap(b);
+	exit(2);
 }
 
-void	pb(t_stack_node **a, t_stack_node **b)
+int	error_repition(t_stack_node *a, int nbr)
 {
-	push(a, b);
-}
-
-void	rb(t_stack_node **b)
-{
-	rotate(b);
-}
-
-void	rrb(t_stack_node **b)
-{
-	rev_rotate(b);
+	if (a == NULL)
+		return (0);
+	while (a)
+	{
+		if (a->value == nbr)
+			return (1);
+		a = a->next;
+	}
+	return (0);
 }
