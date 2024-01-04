@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:03:09 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/12/14 14:05:59 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/04 18:51:38 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,24 @@ static void swap(t_stack_node **stack)
 
 }
 
-void	sa(t_stack_node **a)
+void	sa(t_stack_node **a, bool print)
 {
 	swap(a);
+    if (!print)
+		ft_printf("sa\n");
 }
 
-void	sb(t_stack_node **b)
+void	sb(t_stack_node **b, bool print)
 {
 	swap(b);
+    if (!print)
+		ft_printf("sb\n");
 }
 
-void	ss(t_stack_node **a, t_stack_node **b)
+void	ss(t_stack_node **a, t_stack_node **b, bool print)
 {
 	swap(a);
 	swap(b);
+    if (!print)
+		ft_printf("ss\n");
 }

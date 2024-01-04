@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:02:51 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/12/14 14:02:58 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/04 18:55:04 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ static void	push(t_stack_node **src, t_stack_node **dest)
 	}
 }
 
-void	pb(t_stack_node **a, t_stack_node **b)
+void	pb(t_stack_node **a, t_stack_node **b, bool print)
 {
 	push(a, b);
+	if (!print)
+		ft_printf("pb\n");
 }
 
-void	pa(t_stack_node **b, t_stack_node **a)
+void	pa(t_stack_node **b, t_stack_node **a, bool print)
 {
 	push(b, a);
+	if (!print)
+		ft_printf("pa\n");
 }

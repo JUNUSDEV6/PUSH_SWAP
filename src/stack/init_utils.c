@@ -6,34 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/12/14 14:11:10 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/03 15:11:24 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	ft_atol(const char *str)
-{
-	long	rlt;
-	char	sign;
-
-	rlt = 0;
-	sign = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == 45 || *str == 43)
-	{
-		if (*str == 45)
-			sign = -1;
-		str++;
-	}
-	while (*str >= 48 && *str <= 57)
-	{
-		rlt = rlt * 10 + *str - 48;
-		str++;
-	}
-	return (rlt * sign);
-}
 
 int	ft_stacklen(t_stack_node *stack)
 {
@@ -48,6 +25,17 @@ int	ft_stacklen(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (i);
+}
+/*
+	function to find the last node and return the value
+*/
+t_stack_node *find_last_node(t_stack_node *head)
+{
+	if (head == NULL)
+		return (NULL);
+	while (head->next)
+		head = head->next;
+	return (head);
 }
 
 bool	stack_sorted(t_stack_node *stack)

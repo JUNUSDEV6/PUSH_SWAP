@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:59:29 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/12/14 14:04:38 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/04 18:51:59 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,32 @@ static void	rotate(t_stack_node **stack)
 	last_node->next->prev = last_node;
 }
 
-void	ra(t_stack_node **a)
+void	ra(t_stack_node **a, bool print)
 {
 	rotate(a);
+	if (!print)
+		ft_printf("ra\n");
 }
 
-void	rb(t_stack_node **b)
+void	rb(t_stack_node **b, bool print)
 {
 	rotate(b);
+	if (!print)
+		ft_printf("rb\n");
 }
 
-void	rr(t_stack_node **a, t_stack_node **b)
+void	rr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	ra(a);
 	rb(b);
+	if (!print)
+		ft_printf("rr\n");
+}
+
+void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+{
+	while (*a != cheapest_node && *b != cheapest_node->target_node)
+		rr(a, b, false);
+	current_index(a);
+	current_index(b);
 }

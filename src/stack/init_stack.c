@@ -6,23 +6,35 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/12/14 14:11:06 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/03 15:16:30 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/*
-	function to find the last node and return the value
-*/
-t_stack_node *find_last_node(t_stack_node *head)
+static long	ft_atol(const char *str)
 {
-	if (head == NULL)
-		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head);
+	long	rlt;
+	char	sign;
+
+	rlt = 0;
+	sign = 1;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == 45 || *str == 43)
+	{
+		if (*str == 45)
+			sign = -1;
+		str++;
+	}
+	while (*str >= 48 && *str <= 57)
+	{
+		rlt = rlt * 10 + *str - 48;
+		str++;
+	}
+	return (rlt * sign);
 }
+
 /*
 	create a node with the value 
 	& pointe the node *a in the main to this new *node
@@ -73,18 +85,16 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 		argv++;
 	}
 }
-/*
-int	main()
-{
-	t_stack_node	*a;
 
-	a = NULL;
-	char	*v[5] = {v[0]="25", v[1] = "42", v[2] = "1337", v[3]= "-21", v[4]= NULL};
-	init_stack(&a, v+1, false);
-	while (a)
+t_stack_node	get_cheapest(t_stack_node *stack)
+{
+	if(!stack)
+		return (NULL);
+	while(stack)
 	{
-		printf("\n%d, \t node adress %p\n", a->value, a);
-		a = a->next;
+		if(stack->cheapest)
+			return (stack);
+		stack = stack->next;
 	}
+	return (NULL);
 }
-*/
