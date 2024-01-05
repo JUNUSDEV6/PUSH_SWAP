@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/03 15:16:30 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/04 19:42:55 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,25 @@ t_stack_node	get_cheapest(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (NULL);
+}
+
+void	prep_for_push(t_stack_node *a, t_stack_node *node_to_top, char name_stack)
+{
+	while (*stack != node_to_top)
+	{
+		if(name_stack == 'a')
+		{
+			if(node_to_top->median)
+				ra(a);
+			else
+				rra(a);
+		}
+		else if (name_stack == 'b')
+		{
+			if(node_to_top->median)
+				rb(b);
+			else
+				rrb(b);
+		}
+	}
 }
