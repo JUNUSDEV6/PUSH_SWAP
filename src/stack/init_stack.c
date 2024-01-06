@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/04 19:42:55 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/06 16:06:39 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ void	append_node(t_stack_node **stack, int nbr)
 		last_node->next = node;
 		node->prev = last_node;
 	}
-			
 }
 /*
 	convert to a long 
 	& check the error
 	& initalize the node
 */
+
 void	init_stack(t_stack_node **a, char **argv, bool flag)
 {
 	long	nbr;
@@ -88,31 +88,32 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 
 t_stack_node	get_cheapest(t_stack_node *stack)
 {
-	if(!stack)
+	if (!stack)
 		return (NULL);
-	while(stack)
+	while (stack)
 	{
-		if(stack->cheapest)
+		if (stack->cheapest)
 			return (stack);
 		stack = stack->next;
 	}
 	return (NULL);
 }
 
-void	prep_for_push(t_stack_node *a, t_stack_node *node_to_top, char name_stack)
+void	prep_for_push(t_stack_node *a,
+	t_stack_node *node_to_top, char name_stack)
 {
 	while (*stack != node_to_top)
 	{
-		if(name_stack == 'a')
+		if (name_stack == 'a')
 		{
-			if(node_to_top->median)
+			if (node_to_top->median)
 				ra(a);
 			else
 				rra(a);
 		}
 		else if (name_stack == 'b')
 		{
-			if(node_to_top->median)
+			if (node_to_top->median)
 				rb(b);
 			else
 				rrb(b);

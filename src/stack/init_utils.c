@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/03 15:11:24 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/06 16:13:27 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	ft_stacklen(t_stack_node *stack)
 /*
 	function to find the last node and return the value
 */
-t_stack_node *find_last_node(t_stack_node *head)
+
+t_stack_node	*find_last_node(t_stack_node *head)
 {
 	if (head == NULL)
 		return (NULL);

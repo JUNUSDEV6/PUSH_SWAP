@@ -6,31 +6,31 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/12/04 16:15:49 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/06 16:16:29 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
 static int	cnt_words(char *str, char sep)
 {
 	int		cnt;
 	bool	inside_word;
-	
+
 	cnt = 0;
-	while(*str)
+	while (*str)
 	{
 		inside_word = false;
-		while(*str == sep)
+		while (*str == sep)
 			str++;
-		while(*str != sep && *str)
+		while (*str != sep && *str)
 		{
-			if(!inside_word)
+			if (!inside_word)
 			{
 				inside_word = true;
 				cnt++;
 			}	
-			str++;	
+			str++;
 		}
 	}
 	return (cnt);
@@ -56,13 +56,12 @@ static char	*get_next_words(char *str, char sep)
 		next_str[i++] = str[w_sp++];
 	next_str[i] = '\0';
 	return (next_str);
-	
 }
 
 char	**ft_split(char *str, char sep)
 {
 	int		words_nbr;
-	int 	i;
+	int		i;
 	char	**v_str;
 
 	i = 0;
@@ -70,15 +69,15 @@ char	**ft_split(char *str, char sep)
 	v_str = malloc(sizeof(char *) * (words_nbr + 2));
 	if (!v_str)
 		return (NULL);
-	while(words_nbr-- >= 0)
+	while (words_nbr-- >= 0)
 	{
 		if (i == 0)
 		{
-			v_str[i]= malloc(sizeof(char));
+			v_str[i] = malloc(sizeof(char));
 			if (!v_str[i])
 				return (NULL);
 			v_str[i++][0] = '\0';
-			continue;
+			continue ;
 		}
 		v_str[i++] = get_next_words(str, sep);
 	}

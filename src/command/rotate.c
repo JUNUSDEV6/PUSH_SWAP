@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:59:29 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/04 18:51:59 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/06 15:52:47 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	rotate(t_stack_node **stack)
 {
-    int             len;
+	int				len;
 	t_stack_node	*last_node;
 
 	len = ft_stacklen(*stack);
@@ -48,12 +48,4 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print)
 	rb(b);
 	if (!print)
 		ft_printf("rr\n");
-}
-
-void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
-{
-	while (*a != cheapest_node && *b != cheapest_node->target_node)
-		rr(a, b, false);
-	current_index(a);
-	current_index(b);
 }
