@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/06 16:12:32 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/07 11:04:35 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	current_index(t_stack_node *a)
 	}
 }
 
-void	target_smaller(t_stack_node *a, t_stack_node *b)
+static void	target_smaller(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
@@ -58,7 +58,7 @@ void	target_smaller(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	cost_operation(t_stack_node *a, t_stack_node *b)
+static void	cost_operation(t_stack_node *a, t_stack_node *b)
 {
 	int	len_a;
 	int	len_b;

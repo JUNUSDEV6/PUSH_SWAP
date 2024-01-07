@@ -6,13 +6,13 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:30:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/06 15:42:13 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/07 11:15:25 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate_both(t_stack_node **a,
+static void	rotate_both(t_stack_node **a,
 	t_stack_node	**b, t_stack_node	*cheapest_node)
 {
 	while (*a != cheapest_node && *b != cheapest_node->target_node)
@@ -48,17 +48,6 @@ static void	move_b_to_a(t_stack_node **a,	t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b, false);
-}
-
-static void	min_on_top(t_stack_node **a)
-{
-	while ((*a)->nbr != find_min((*a)->nbr))
-	{
-		if (find_min((*a)->median))
-			ra(a, false);
-		else
-			rra(a, false);
-	}
 }
 
 void	sort_stacks(t_stack_node **a, t_stack_node **b)

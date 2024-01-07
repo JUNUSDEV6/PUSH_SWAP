@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:06:26 by youneshanaf       #+#    #+#             */
-/*   Updated: 2023/11/14 13:09:27 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/07 11:16:01 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-
 	if (1 == argc || (2 == argc & !argv[1][0]))
 		return (1);
 	else if (2 == argv)

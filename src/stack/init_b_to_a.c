@@ -6,13 +6,13 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:19:36 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/06 16:12:13 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/07 11:07:14 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	target_biggest(t_stack_node *a, t_stack_node *b)
+static void	target_biggest(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
