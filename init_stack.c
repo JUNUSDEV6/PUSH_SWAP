@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/07 11:02:13 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 22:05:40 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static long	ft_atol(const char *str)
 {
@@ -99,24 +99,23 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-void	prep_for_push(t_stack_node *a,
-	t_stack_node *node_to_top, char name_stack)
+void	prep_for_push(t_stack_node **stack, t_stack_node *top, char name)
 {
-	while (*stack != node_to_top)
+	while (*stack != top)
 	{
-		if (name_stack == 'a')
+		if (name == 'a')
 		{
-			if (node_to_top->median)
-				ra(a);
+			if (top->median)
+				ra(stack, false);
 			else
-				rra(a);
+				rra(stack, false);
 		}
-		else if (name_stack == 'b')
+		else if (name == 'b')
 		{
-			if (node_to_top->median)
-				rb(b);
+			if (top->median)
+				rb(stack, false);
 			else
-				rrb(b);
+				rrb(stack, false);
 		}
 	}
 }

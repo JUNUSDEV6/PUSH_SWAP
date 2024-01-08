@@ -6,19 +6,19 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/07 11:04:35 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 21:59:44 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	current_index(t_stack_node *a)
+void	current_index(t_stack_node *stack)
 {
 	int	median;
 	int	i;
 
 	i = 0;
-	median = ft_stacklen(a) / 2;
+	median = ft_stacklen(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -35,22 +35,22 @@ static void	target_smaller(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
-	long			best_match_index;
+	long			best_match;
 
 	while (a)
 	{
 		current_b = b;
-		best_match_index = LONG_MIN;
+		best_match = LONG_MIN;
 		while (current_b)
 		{
-			if (current_b->nbr < a->nbr && current_b->nbr > best_match_index)
+			if (current_b->value < a->value && current_b->value > best_match)
 			{
 				target_node = current_b;
-				best_match_index = current_b->nbr;
+				best_match = current_b->value;
 			}
 			current_b = current_b->next;
 		}
-		if (best_match_index == LONG_MIN)
+		if (best_match == LONG_MIN)
 			a->target_node = find_big(b);
 		else
 			a->target_node = target_node;

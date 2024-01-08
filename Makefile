@@ -1,30 +1,28 @@
-SRCS    =   push_swap.c split.c
+NAME = push_swap
+SRCS = push_swap.c ft_check_form.c ft_printf.c ft_printf_utils.c \
+       split.c error.c sort_stack.c sort_three.c push.c \
+       rev_rotate.c rotate.c swap.c init_a_to_b.c \
+       init_b_to_a.c init_stack.c init_utils.c 
 
-OBJS    =   ${SRCS:.c=.o}
+OBJS = ${SRCS:.c=.o}
+CC = gcc
+RM = rm -f
+CFLAGS = -Wall -Wextra -Werror
 
-NAME    =   libftprintf.a
+# Utilisation de variables automatiques pour rendre le Makefile plus extensible
+%.o: %.c
+	${CC} ${CFLAGS} ${INCS} -c $< -o $@
 
-AR    =   ar rcs
+${NAME}: ${OBJS}
+	${CC} -o ${NAME} ${OBJS}
 
-CC      =   cc
-
-RM      = rm -f
-
-CFLAGS  =   -Wall -Werror -Wextra
-
-all: $(NAME)
-
-$(OBJS): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+all: ${NAME}
 
 clean:
-	$(RM) $(OBJS)
+	${RM} ${OBJS}
 
 fclean: clean
-	$(RM) $(NAME)
+	${RM} ${NAME}
 
 re: fclean all
 

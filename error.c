@@ -6,15 +6,22 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:08:29 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/12/04 16:17:06 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 17:24:42 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	error_free(t_stack_node **a, char **argv, bool flag_bool)
+void	free_matrix(char **argv)
 {
-	exit(2);
+	int	i;
+
+	i = -1;
+	if (NULL == argv || NULL == *argv)
+		return ;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv - 1);
 }
 
 int	error_repition(t_stack_node *a, int nbr)
@@ -28,4 +35,31 @@ int	error_repition(t_stack_node *a, int nbr)
 		a = a->next;
 	}
 	return (0);
+}
+
+void	free_stack(t_stack_node **stack)
+{
+	t_stack_node	*tmp;
+	t_stack_node	*current;
+
+	if (!stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		current->value = 0;
+		free(current);
+		current = tmp;
+	}
+	*stack = NULL;
+}
+
+void	error_free(t_stack_node **a, char **argv, bool flag)
+{
+	free_stack(a);
+	if (flag)
+		free_matrix(argv);
+	write(2, "Error\n", 6);
+	exit(1);
 }

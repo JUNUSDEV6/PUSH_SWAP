@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:03:09 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/06 16:02:40 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 16:34:04 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	swap(t_stack_node **stack)
 {

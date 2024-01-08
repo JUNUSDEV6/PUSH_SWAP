@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/06 16:13:27 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 16:33:13 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	ft_stacklen(t_stack_node *stack)
 {

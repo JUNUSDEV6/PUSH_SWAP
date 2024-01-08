@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:00:15 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/06 15:59:55 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 21:34:17 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	rev_rotate(t_stack_node **stack)
 {
@@ -21,7 +21,7 @@ static void	rev_rotate(t_stack_node **stack)
 	first_node = *stack;
 	last_node = find_last_node(*stack);
 	len = ft_stacklen(*stack);
-	if (!*stack || !(*stack)->next || len = 1)
+	if (!*stack || !(*stack)->next || len == 1)
 		return ;
 	last_node->prev->next = NULL;
 	last_node->prev = NULL;
@@ -46,8 +46,8 @@ void	rrb(t_stack_node **b, bool print)
 
 void	rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
-	rra(a);
-	rrb(b);
+	rev_rotate(a);
+	rev_rotate(b);
 	if (!print)
 		ft_printf("rrr\n");
 }

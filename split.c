@@ -6,11 +6,11 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/06 16:16:29 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 16:33:56 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static int	cnt_words(char *str, char sep)
 {
