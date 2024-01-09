@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/08 22:05:40 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/09 12:54:21 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 
 	while (*argv)
 	{
+		if (error_syntax(*argv))
+			error_free(a, argv, flag);
 		nbr = ft_atol(*argv);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error_free(a, argv, flag);

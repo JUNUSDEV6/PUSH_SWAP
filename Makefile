@@ -1,5 +1,5 @@
 NAME = push_swap
-SRCS = push_swap.c ft_check_form.c ft_printf.c ft_printf_utils.c \
+SRCS = checker.c ft_check_form.c ft_printf.c ft_printf_utils.c \
        split.c error.c sort_stack.c sort_three.c push.c \
        rev_rotate.c rotate.c swap.c init_a_to_b.c \
        init_b_to_a.c init_stack.c init_utils.c 
@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Utilisation de variables automatiques pour rendre le Makefile plus extensible
 %.o: %.c
-	${CC} ${CFLAGS} ${INCS} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
 	${CC} -o ${NAME} ${OBJS}

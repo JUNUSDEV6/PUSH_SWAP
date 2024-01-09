@@ -6,11 +6,29 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:08:29 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/08 17:24:42 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/09 12:55:32 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	error_syntax(char *str_nbr)
+{
+	if (!(*str_nbr == '+'
+			|| *str_nbr == '-'
+			|| (*str_nbr >= '0' && *str_nbr <= '9')))
+		return (1);
+	if ((*str_nbr == '+'
+			|| *str_nbr == '-')
+		&& !(str_nbr[1] >= '0' && str_nbr[1] <= '9'))
+		return (1);
+	while (*++str_nbr)
+	{
+		if (!(*str_nbr >= '0' && *str_nbr <= '9'))
+			return (1);
+	}
+	return (0);
+}
 
 void	free_matrix(char **argv)
 {

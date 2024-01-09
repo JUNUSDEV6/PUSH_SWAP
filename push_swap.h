@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:08:35 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 22:04:33 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/09 12:55:54 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char			**ft_split(char *str, char sep);
 int				ft_printf(const char *format, ...);
 
 /*-------ERROR-------*/
+int				error_syntax(char *str_nbr);
 void			free_matrix(char **argv);
 void			error_free(t_stack_node **a, char **argv, bool flag);
 int				error_repition(t_stack_node *a, int nbr);

@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/08 16:33:56 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/08 23:19:51 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	cnt_words(char *str, char sep)
 	while (*str)
 	{
 		inside_word = false;
-		while (*str == sep)
+		while (*str == sep && *str)
 			str++;
 		while (*str != sep && *str)
 		{
