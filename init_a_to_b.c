@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 21:59:44 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/10 14:12:00 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	current_index(t_stack_node *stack)
 	int	i;
 
 	i = 0;
+	if (!stack)
+		return ;
 	median = ft_stacklen(stack) / 2;
 	while (stack)
 	{

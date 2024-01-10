@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/09 12:54:21 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/09 15:45:09 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 		append_node(a, (int)nbr);
 		argv++;
 	}
+	if (flag)
+		free_matrix(argv);
 }
 
 t_stack_node	*get_cheapest(t_stack_node *stack)
