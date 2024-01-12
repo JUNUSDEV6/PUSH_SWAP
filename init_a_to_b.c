@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/10 14:12:00 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/11 18:09:38 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	set_cheapest(t_stack_node *stack)
 	long			cheapest_value;
 	t_stack_node	*cheapest_node;
 
+	if (!stack)
+		return ;
 	cheapest_value = LONG_MAX;
 	while (stack)
 	{

@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 16:30:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 22:12:24 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/11 18:15:00 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 static void	move_b_to_a(t_stack_node **a,	t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
-	pa(a, b, false);
+	pa(b, a, false);
 }
 
 void	sort_stack(t_stack_node **a, t_stack_node **b)
@@ -63,7 +63,7 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 		move_a_to_b(a, b);
 	}
 	sort_three(a);
-	while (b)
+	while (*b)
 	{
 		algo_b_to_a(*a, *b);
 		move_b_to_a(a, b);

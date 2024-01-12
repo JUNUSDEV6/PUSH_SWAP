@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/10 14:20:04 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/10 14:22:01 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_split(char *str, char sep)
 	v_str = malloc(sizeof(char *) * (words_nbr + 2));
 	if (!v_str)
 		return (NULL);
-	while (--words_nbr >= 0)
+	while (words_nbr-- >= 0)
 	{
 		if (i == 0)
 		{
