@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:00:15 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 21:34:17 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/23 11:01:34 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	rev_rotate(t_stack_node **stack)
 	t_stack_node	*last_node;
 
 	first_node = *stack;
-	last_node = find_last_node(*stack);
-	len = ft_stacklen(*stack);
+	last_node = find_last(*stack);
+	len = stacklen(*stack);
 	if (!*stack || !(*stack)->next || len == 1)
 		return ;
 	last_node->prev->next = NULL;

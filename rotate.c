@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:59:29 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 21:35:02 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/23 11:01:54 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	rotate(t_stack_node **stack)
 	int				len;
 	t_stack_node	*last_node;
 
-	len = ft_stacklen(*stack);
+	len = stacklen(*stack);
 	if (!*stack || !stack || len == 1)
 		return ;
-	last_node = find_last_node(*stack);
+	last_node = find_last(*stack);
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   three_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 14:52:45 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/09 14:52:52 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/18 15:28:17 by youneshanaf       #+#    #+#             */
+/*   Updated: 2024/01/23 11:00:16 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ void	min_on_top(t_stack_node **a)
 
 void	sort_three(t_stack_node **a)
 {
-	t_stack_node	*node_big;
+	t_stack_node	*biggest_node;
 
-	node_big = find_big(*a);
-	if (*a == node_big)
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
 		ra(a, false);
-	else if ((*a)->next == node_big)
+	else if ((*a)->next == biggest_node)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
 }
+

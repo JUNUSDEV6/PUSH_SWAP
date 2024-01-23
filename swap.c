@@ -6,7 +6,7 @@
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:03:09 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 16:34:04 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/23 11:02:01 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	swap(t_stack_node **stack)
 {
 	int	len;
 
-	len = ft_stacklen(*stack);
+	len = stacklen(*stack);
 	if (!*stack || !stack || len == 1)
 		return ;
 	(*stack) = (*stack)->next;

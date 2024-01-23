@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_a_to_b.c                                      :+:      :+:    :+:   */
+/*   algo_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 17:36:38 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/11 18:09:38 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/18 15:52:06 by youneshanaf       #+#    #+#             */
+/*   Updated: 2024/01/23 11:02:42 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	current_index(t_stack_node *stack)
 {
-	int	median;
 	int	i;
+	int	median;
 
 	i = 0;
-	if (!stack)
-		return ;
-	median = ft_stacklen(stack) / 2;
+	median = stacklen(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -33,7 +31,7 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
-static void	target_smaller(t_stack_node *a, t_stack_node *b)
+static void	target_smallest(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
@@ -41,32 +39,32 @@ static void	target_smaller(t_stack_node *a, t_stack_node *b)
 
 	while (a)
 	{
-		current_b = b;
 		best_match = LONG_MIN;
+		current_b = b;
 		while (current_b)
 		{
 			if (current_b->value < a->value && current_b->value > best_match)
 			{
-				target_node = current_b;
 				best_match = current_b->value;
+				target_node = current_b;
 			}
 			current_b = current_b->next;
 		}
 		if (best_match == LONG_MIN)
-			a->target_node = find_big(b);
+			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
 	}
 }
 
-static void	cost_operation(t_stack_node *a, t_stack_node *b)
+static void	push_cost(t_stack_node *a, t_stack_node *b)
 {
 	int	len_a;
 	int	len_b;
 
-	len_a = ft_stacklen(a);
-	len_b = ft_stacklen(b);
+	len_a = stacklen(a);
+	len_b = stacklen(b);
 	while (a)
 	{
 		a->push_cost = a->index;
@@ -75,7 +73,7 @@ static void	cost_operation(t_stack_node *a, t_stack_node *b)
 		if (a->target_node->median)
 			a->push_cost += a->target_node->index;
 		else
-			a->push_cost = len_b - (a->target_node->index);
+			a->push_cost += len_b - (a->target_node->index);
 		a = a->next;
 	}
 }
@@ -100,11 +98,11 @@ void	set_cheapest(t_stack_node *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	algo_a_to_b(t_stack_node *a, t_stack_node *b)
+void	init_a(t_stack_node *a, t_stack_node *b)
 {
 	current_index(a);
 	current_index(b);
-	target_smaller(a, b);
-	cost_operation(a, b);
+	target_smallest(a, b);
+	push_cost(a, b);
 	set_cheapest(a);
 }

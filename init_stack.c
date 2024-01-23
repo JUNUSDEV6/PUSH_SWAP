@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:29:44 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/09 15:45:09 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/18 11:33:53 by youneshanaf       #+#    #+#             */
+/*   Updated: 2024/01/23 11:24:20 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,62 +35,52 @@ static long	ft_atol(const char *str)
 	return (rlt * sign);
 }
 
-/*
-	create a node with the value 
-	& pointe the node *a in the main to this new *node
-	& search for the last node and append
-*/
-void	append_node(t_stack_node **stack, int nbr)
+static void	append_node(t_stack_node **stack, int nbr)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
 
-	if (!stack)
-		return ;
 	node = malloc(sizeof(t_stack_node));
 	if (!node)
 		return ;
 	node->next = NULL;
 	node->value = nbr;
-	if (NULL == *stack)
+	if(!(*stack))
 	{
 		*stack = node;
 		node->prev = NULL;
 	}
 	else
 	{
-		last_node = find_last_node(*stack);
+		last_node = find_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
 }
-/*
-	convert to a long 
-	& check the error
-	& initalize the node
-*/
 
 void	init_stack(t_stack_node **a, char **argv, bool flag)
 {
 	long	nbr;
+	int		i;
 
-	while (*argv)
+	i = 0;
+	while (argv[i])
 	{
-		if (error_syntax(*argv))
+		if (error_syntax(argv[i]))
 			error_free(a, argv, flag);
-		nbr = ft_atol(*argv);
+		nbr = ft_atol(argv[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error_free(a, argv, flag);
 		if (error_repition(*a, (int)nbr))
 			error_free(a, argv, flag);
 		append_node(a, (int)nbr);
-		argv++;
+		i++;
 	}
 	if (flag)
 		free_matrix(argv);
 }
 
-t_stack_node	*get_cheapest(t_stack_node *stack)
+t_stack_node	*get_cheapest(t_stack_node * stack)
 {
 	if (!stack)
 		return (NULL);

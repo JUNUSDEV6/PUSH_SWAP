@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_utils.c                                       :+:      :+:    :+:   */
+/*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:29:49 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/08 16:33:13 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/18 14:30:17 by youneshanaf       #+#    #+#             */
+/*   Updated: 2024/01/23 11:04:38 by youneshanaf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stacklen(t_stack_node *stack)
+int	stacklen(t_stack_node *stack)
 {
-	int	i;
+	int	leng;
 
-	i = 0;
+	leng = 0;
 	if (!stack)
 		return (0);
 	while (stack)
 	{
-		i++;
 		stack = stack->next;
+		leng++;
 	}
-	return (i);
+	return (leng);
 }
-/*
-	function to find the last node and return the value
-*/
 
-t_stack_node	*find_last_node(t_stack_node *head)
+t_stack_node	*find_last(t_stack_node *stack)
 {
-	if (head == NULL)
+	if (!stack)
 		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
 bool	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
-		return (1);
+		return (NULL);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
@@ -72,7 +69,7 @@ t_stack_node	*find_min(t_stack_node *stack)
 	return (min_node);
 }
 
-t_stack_node	*find_big(t_stack_node *stack)
+t_stack_node	*find_max(t_stack_node *stack)
 {
 	long			max;
 	t_stack_node	*max_node;
