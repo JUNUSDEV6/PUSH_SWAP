@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:33:53 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:24:20 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 11:04:13 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	append_node(t_stack_node **stack, int nbr)
 		return ;
 	node->next = NULL;
 	node->value = nbr;
-	if(!(*stack))
+	if (!(*stack))
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -80,7 +80,7 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 		free_matrix(argv);
 }
 
-t_stack_node	*get_cheapest(t_stack_node * stack)
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);

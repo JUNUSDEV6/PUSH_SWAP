@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:17:09 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:25:19 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 11:02:11 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

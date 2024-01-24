@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:26 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:26:36 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 11:04:38 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h> 
 # include <unistd.h>
 
-typedef struct	s_stack_node
+typedef struct s_stack_node
 {
 	int					value;
 	int					index;
@@ -45,9 +45,10 @@ void			free_stack(t_stack_node **stack);
 int				stacklen(t_stack_node *stack);
 bool			stack_sorted(t_stack_node *stack);
 void			init_stack(t_stack_node **a, char **argv, bool flag);
-void			prep_for_push(t_stack_node **stack, t_stack_node *top, char name);
+void			prep_for_push(t_stack_node **stack, \
+t_stack_node *top, char name);
 void			min_on_top(t_stack_node **a);
-t_stack_node	*get_cheapest(t_stack_node * stack);
+t_stack_node	*get_cheapest(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);

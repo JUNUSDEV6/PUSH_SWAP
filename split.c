@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:27:19 by yohanafi          #+#    #+#             */
-/*   Updated: 2024/01/10 14:22:01 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 11:04:58 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	cnt_words(char *str, char sep)
 			{
 				inside_word = true;
 				cnt++;
-			}	
+			}
 			str++;
 		}
 	}

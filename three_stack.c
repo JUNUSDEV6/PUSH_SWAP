@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   three_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:28:17 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:00:16 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 11:05:05 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	sort_three(t_stack_node **a)
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
 }
-
