@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:38:24 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:13:42 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/24 15:44:12 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	if (cheapest_node->median && cheapest_node->target_node->median)
 		r_b(a, b, cheapest_node);
 	else if (!(cheapest_node->median) && !(cheapest_node->target_node->median))
-		rr_b(a, b, false);
+		rr_b(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
 	pb(a, b, false);
+	//ft_printf("%d\n", (*a)->value);
+	//ft_printf("%d\n", (*a)->next->value);
+	//ft_printf("%d\n", (*a)->next->next->value);
 }
 
 static void	move_b_to_a(t_stack_node **a, t_stack_node **b)

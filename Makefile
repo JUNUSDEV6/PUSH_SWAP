@@ -7,13 +7,13 @@ SRCS = checker.c ft_check_form.c ft_printf.c ft_printf_utils.c \
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
-	${CC} -o ${NAME} ${OBJS}
+	${CC}  -fsanitize=address -g3 -o ${NAME} ${OBJS}
 
 all: ${NAME}
 
