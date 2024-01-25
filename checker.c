@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:17:09 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/24 11:02:11 by yohanafi         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:44:54 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
+	if (!argv)
+		return (1);
 	init_stack(&a, argv + 1, 2 == argc);
 	if (!stack_sorted(a))
 	{

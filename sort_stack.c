@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:38:24 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/24 15:44:12 by yohanafi         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:42:25 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
 	pb(a, b, false);
-	//ft_printf("%d\n", (*a)->value);
-	//ft_printf("%d\n", (*a)->next->value);
-	//ft_printf("%d\n", (*a)->next->next->value);
 }
 
 static void	move_b_to_a(t_stack_node **a, t_stack_node **b)

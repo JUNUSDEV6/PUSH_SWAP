@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:33:53 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/24 11:04:13 by yohanafi         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:47:33 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	init_stack(t_stack_node **a, char **argv, bool flag)
 	int		i;
 
 	i = 0;
+	if (!argv)
+		return ;
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
