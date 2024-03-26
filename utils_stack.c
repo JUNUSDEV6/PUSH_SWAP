@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:30:17 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:04:38 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/29 11:35:59 by yohanafi          #+#    #+#             */
+/*   Updated: 2024/01/29 11:36:11 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

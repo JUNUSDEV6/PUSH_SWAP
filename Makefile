@@ -1,5 +1,5 @@
 NAME = push_swap
-SRCS = main.c checker.c ft_check_form.c ft_printf.c ft_printf_utils.c \
+SRCS = main.c ft_check_form.c ft_printf.c ft_printf_utils.c \
        split.c error.c sort_stack.c three_stack.c push.c \
        rev_rotate.c rotate.c swap.c algo_a_to_b.c \
        algo_b_to_a.c init_stack.c utils_stack.c 
@@ -13,7 +13,7 @@ CFLAGS = -Wall -Wextra -Werror
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
-	${CC}  -fsanitize=address -g3 -o ${NAME} ${OBJS}
+	${CC} -o ${NAME} ${OBJS}
 
 all: ${NAME}
 

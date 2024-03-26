@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 15:02:51 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/08 16:33:28 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/29 11:36:46 by yohanafi          #+#    #+#             */
+/*   Updated: 2024/01/29 11:38:37 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

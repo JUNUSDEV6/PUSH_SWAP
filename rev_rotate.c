@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 15:00:15 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/23 11:01:34 by youneshanaf      ###   ########.fr       */
+/*   Created: 2024/01/29 11:36:40 by yohanafi          #+#    #+#             */
+/*   Updated: 2024/01/29 11:38:44 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

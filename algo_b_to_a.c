@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youneshanafi <youneshanafi@student.42.f    +#+  +:+       +#+        */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:17:47 by youneshanaf       #+#    #+#             */
-/*   Updated: 2024/01/18 17:31:45 by youneshanaf      ###   ########.fr       */
+/*   Updated: 2024/01/29 11:37:16 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
