@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 11:28:59 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/05/24 10:48:02 by yohanafi         ###   ########.fr       */
+/*   Created: 2025/09/19 18:32:27 by yohanafi          #+#    #+#             */
+/*   Updated: 2025/09/26 17:44:24 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/push_swap.h"
 
-size_t	ft_putchar(char c)
+int main(int argc, char **argv)
 {
-	return (write(1, &c, 1));
-}
+	t_stack	a;
+	t_stack	b;
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = ft_strlen(str);
-	return (write(1, str, i));
+	if (argc == 1)
+		return (1);
+	else if (argc == 2 && !argv[1][0])
+		return (1);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	
+	init_stack(&a, argv + 1);
+	init_stack(&b, NULL);
+	
+	// Debug : afficher les stacks
+	print_stack(&a, "A");
+	print_stack(&b, "B");
+	
+	return (0);
 }

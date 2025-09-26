@@ -1,27 +1,30 @@
 NAME = push_swap
-SRCS = main.c ft_check_form.c ft_printf.c ft_printf_utils.c \
-       split.c error.c sort_stack.c three_stack.c push.c \
-       rev_rotate.c rotate.c swap.c algo_a_to_b.c \
-       algo_b_to_a.c init_stack.c utils_stack.c 
 
-OBJS = ${SRCS:.c=.o}
 CC = gcc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g
+
+SRCDIR = src
+INCDIR = include
+
+SOURCES = src/main.c \
+		  src/parsing/init_stack.c \
+		  src/utils/ft_split.c
+
+OBJECTS = $(SOURCES:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS)
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
-
-${NAME}: ${OBJS}
-	${CC} -o ${NAME} ${OBJS}
-
-all: ${NAME}
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 clean:
-	${RM} ${OBJS}
+	rm -f $(OBJECTS)
 
 fclean: clean
-	${RM} ${NAME}
+	rm -f $(NAME)
 
 re: fclean all
 
