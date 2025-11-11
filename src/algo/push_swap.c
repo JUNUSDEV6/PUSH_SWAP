@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/19 18:32:27 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/10/23 12:34:14 by yohanafi         ###   ########.fr       */
+/*   Created: 2025/10/04 12:00:00 by yohanafi          #+#    #+#             */
+/*   Updated: 2025/10/04 19:29:10 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
-int main(int argc, char **argv)
+void push_swap(t_stack *a, t_stack *b)
 {
-	t_stack a;
-	t_stack b;
-
-	if (argc == 1)
-		return (1);
-	else if (argc == 2 && !argv[1][0])
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	init_stack(&a, argv + 1);
-	init_stack(&b, NULL);
-	push_swap(&a, &b);
-	return (0);
+	if (is_sorted(a))
+		return;
+	if (a->size <= 5)
+		sort_small(a, b);
+	else
+		sort_big(a, b);
 }
