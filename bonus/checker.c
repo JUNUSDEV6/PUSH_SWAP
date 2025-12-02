@@ -57,22 +57,16 @@ int main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-
 	init_stack(&a, argv + 1);
 	init_stack(&b, NULL);
-
 	line = NULL;
 	len = 0;
 	while (getline(&line, &len, stdin) != -1)
-	{
 		execute_operation(line, &a, &b);
-	}
-
 	if (is_sorted(&a) && b.size == 0)
 		printf("OK\n");
 	else
 		printf("KO\n");
-
 	free(line);
 	return (0);
 }
