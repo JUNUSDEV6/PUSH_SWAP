@@ -6,87 +6,13 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:27:42 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/11/13 15:14:40 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:45:42 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static void	assign_index(t_stack *stack)
-{
-	t_node *current;
-	t_node *compare;
-	int		index;
-
-	current = stack->top;
-	while (current)
-	{
-		index = 0;
-		compare = stack->top;
-		while (compare)
-		{
-			if (compare->value < current->value)
-				i++;
-			compare = compare->next;
-		}
-		current->index = index;
-		current = current->index;
-	}
-}
-
-static void	push_chunk_to_b(t_stack *a, t_stack *b)
-{
-	int	chunk_size;
-	int	chunks;
-	int	i;
-
-	assign_index(a);
-	if (a->size <= 100)
-		chunks = 5;
-	else
-		chunks = 11;
-	chunk_size = a->size / chunks;
-	i = 0;
-	while (a->size > 3)
-	{
-		if (a->top->index <= i)
-		{
-			pb(a, b);
-			rb(b);
-			i++;
-		}
-		else if (a->top->index <= 1 + chunk_size)
-		{
-			pb(a, b);
-			i++;
-		}
-		else
-			ra(a);
-	}
-}
-
-static int	find_best_target(t_stack *a, int b_value)
-{
-	t_node	*current;
-	int		target;
-	int		best_target;
-
-	current = a->top;
-	target = INT_MAX;
-	best_target = find_max(a);
-	while (current)
-	{
-		if (current->value > b_value && current->value < target)
-		{
-			target = current->value;
-			best_target = current->value;
-		}
-		current = current->next;
-	}
-	return (best_target);
-}
-
-static int calculate_moves(t_stack *a, t_stack *b, int target)
+static int	calculate_moves(t_stack *a, t_stack *b, int target)
 {
 	int	moves_a;
 	int	moves_b;
@@ -176,7 +102,7 @@ void	sort_big(t_stack *a, t_stack *b)
 {
 	if (is_sorted(a))
 		return ;
-	push_to_b(a, b);
+	push_chunk_to_b(a, b, 0);
 	sort_small(a, b);
 	push_back_to_a(a, b);
 	final_rotation(a);
