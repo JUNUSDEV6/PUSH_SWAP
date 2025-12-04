@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 12:00:00 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/10/04 19:09:27 by yohanafi         ###   ########.fr       */
+/*   Created: 2025/12/02 14:50:22 by yohanafi          #+#    #+#             */
+/*   Updated: 2025/12/02 14:56:01 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ bool	is_sorted(t_stack *stack)
 
 	if (!stack || stack->size <= 1)
 		return (true);
-
 	current = stack->top;
 	while (current->next)
 	{
@@ -36,7 +35,6 @@ int	find_min(t_stack *stack)
 
 	if (!stack || stack->size == 0)
 		return (0);
-
 	current = stack->top;
 	min = current->value;
 	while (current)
@@ -55,7 +53,6 @@ int	find_max(t_stack *stack)
 
 	if (!stack || stack->size == 0)
 		return (0);
-
 	current = stack->top;
 	max = current->value;
 	while (current)
@@ -74,7 +71,6 @@ int	find_position(t_stack *stack, int value)
 
 	if (!stack)
 		return (-1);
-
 	current = stack->top;
 	pos = 0;
 	while (current)

@@ -1,17 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 12:00:00 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/10/04 19:09:19 by yohanafi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/push_swap.h"
 #include <string.h>
+
+static void error()
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 static void	execute_operation(char *op, t_stack *a, t_stack *b)
 {
@@ -38,10 +32,7 @@ static void	execute_operation(char *op, t_stack *a, t_stack *b)
 	else if (strcmp(op, "rrr\n") == 0)
 		rrr_silent(a, b);
 	else
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		error();
 }
 
 int main(int argc, char **argv)
@@ -64,9 +55,9 @@ int main(int argc, char **argv)
 	while (getline(&line, &len, stdin) != -1)
 		execute_operation(line, &a, &b);
 	if (is_sorted(&a) && b.size == 0)
-		printf("OK\n");
+		write(1, "OK\n", 3);
 	else
-		printf("KO\n");
+		write(1, "KO\n", 3);
 	free(line);
 	return (0);
 }

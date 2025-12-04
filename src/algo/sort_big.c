@@ -43,7 +43,7 @@ static void	push_chunks_to_b(t_stack *a, t_stack *b)
 	assign_index(a);
 	
 	if (a->size <= 100)
-		chunks = 5;
+		chunks = 7;
 	else
 		chunks = 11;
 	

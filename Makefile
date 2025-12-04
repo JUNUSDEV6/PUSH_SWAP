@@ -1,52 +1,37 @@
 NAME = push_swap
 CHECKER = checker
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCDIR = src
-INCDIR = include
-BONUSDIR = bonus
+SRCS = $(wildcard src/*.c src/algo/*.c src/operation/*.c src/parsing/*.c src/utils/*.c)
+OBJS = $(SRCS:.c=.o)
 
-SOURCES = src/main.c \
-		  src/parsing/init_stack.c \
-		  src/utils/ft_split.c \
-		  src/utils/utils.c \
-		  src/operations/swap.c \
-		  src/operations/push.c \
-		  src/operations/rotate.c \
-		  src/algo/push_swap.c \
-		  src/algo/sort_small.c \
-		  src/algo/sort_big.c
+BONUS_SRCS = bonus/checker.c bonus/swap_silent.c bonus/rotate_silent.c bonus/reverse_rotate.c bonus/push_silente.c
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-BONUS_SOURCES = bonus/checker.c \
-				bonus/operations_silent.c \
-				src/parsing/init_stack.c \
-				src/utils/ft_split.c \
-				src/utils/utils.c
+CHECKER_SRCS = $(filter-out src/main.c, $(SRCS)) $(BONUS_SRCS)
+CHECKER_OBJS = $(CHECKER_SRCS:.c=.o)
 
-OBJECTS = $(SOURCES:.c=.o)
-BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS)
-
 bonus: $(CHECKER)
 
-$(CHECKER): $(BONUS_OBJECTS)
-	$(CC) $(CFLAGS) -o $(CHECKER) $(BONUS_OBJECTS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -Iinclude -o $(NAME) $(OBJS)
+
+$(CHECKER): $(CHECKER_OBJS)
+	$(CC) $(CFLAGS) -Iinclude -o $(CHECKER) $(CHECKER_OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+	$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(BONUS_OBJECTS)
+	@rm -f $(OBJS) $(CHECKER_OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(CHECKER)
+	@rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re

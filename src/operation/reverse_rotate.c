@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-#include <stdio.h>
+#include <unistd.h>
 
 static void	reverse_rotate(t_stack *stack)
 {
@@ -31,18 +31,18 @@ static void	reverse_rotate(t_stack *stack)
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
-	printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
-	printf("rrb\n");
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	printf("rrr\n");
+	write(1, "rrr\n", 4);
 }

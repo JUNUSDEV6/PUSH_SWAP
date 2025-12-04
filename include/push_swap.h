@@ -1,37 +1,58 @@
-#ifndef PUSH_SWAP
-#define PUSH_SWAP
-#include <stdlib.h>
-#include <limits.h>
-#include <stdbool.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/10 15:25:23 by yohanafi          #+#    #+#             */
+/*   Updated: 2025/11/12 18:08:37 by yohanafi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct  s_node
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# define _POSIX_C_SOURCE 200809L
+# include <stdlib.h>
+# include <limits.h>
+# include <stdbool.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdio.h>
+
+typedef struct s_node
 {
-    int				value;
-    int				index;
-    int				cost;
-    int				target;
+	int				value;
+	int				index;
+	int				cost;
+	int				target;
 	bool			above_median;
 	bool			cheapest;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_node	*top;
 	t_node	*bottom;
 	int		size;
 }	t_stack;
 
-// Function prototypes
-void	init_stack(t_stack *stack, char **argv);
-void	print_stack(t_stack *stack, char *name);
+// UTILS
+bool	is_sorted(t_stack *stack);
+int	find_min(t_stack *stack);
+int	find_max(t_stack *stack);
+int	find_position(t_stack *stack, int value);
 char	**ft_split(char const *s, char c);
 
-// Operations
+// MAIN
+void	init_stack(t_stack *stack, char **argv);
+void	push_swap(t_stack *a, t_stack *b);
+void	sort_small(t_stack *a, t_stack *b);
+void	sort_big(t_stack *a, t_stack *b);
+
+// OPERATIONS
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
@@ -44,18 +65,7 @@ void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
-// Utils
-bool	is_sorted(t_stack *stack);
-int		find_min(t_stack *stack);
-int		find_max(t_stack *stack);
-int		find_position(t_stack *stack, int value);
-
-// Algorithms
-void	push_swap(t_stack *a, t_stack *b);
-void	sort_small(t_stack *a, t_stack *b);
-void	sort_big(t_stack *a, t_stack *b);
-
-// Silent operations (for checker)
+// OPERATIONS SILENT (BONUS)
 void	sa_silent(t_stack *a);
 void	sb_silent(t_stack *b);
 void	ss_silent(t_stack *a, t_stack *b);

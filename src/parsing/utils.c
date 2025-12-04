@@ -16,7 +16,7 @@ void	set_stack(t_node *node, int nb)
 {
 	if (!node)
 		return ;
-	node->value = 0;
+	node->value = nb;
 	node->index = 0;
 	node->cost = 0;
 	node->target = 0;
@@ -49,69 +49,3 @@ long	ft_atol(char *str)
 	return (rlt * sign);
 }
 
-static int	count_words(char const *s, char c)
-{
-	int	count;
-	int	in_word;
-
-	count = 0;
-	in_word = 0;
-	while (*s)
-	{
-		if (*s != c && !in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (*s == c)
-			in_word = 0;
-		s++;
-	}
-	return (count);
-}
-
-static char	*extract_word(char const *s, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	word = malloc(sizeof(char) * (end - start + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (start < end)
-	{
-		word[i] = s[start];
-		i++;
-		start++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-char	**ft_split(char const *s, char c, int i, int j)
-{
-	char	**result;
-	int		start;
-
-	if (!s)
-		return (NULL);
-	result = malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!result)
-		return (NULL);
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
-		{
-			start = i;
-			while (s[i] && s[i] != c)
-				i++;
-			result[j] = extract_word(s, start, i);
-			j++;
-		}
-	}
-	result[j] = NULL;
-	return (result);
-}

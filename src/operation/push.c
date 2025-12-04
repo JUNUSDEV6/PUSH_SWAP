@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-#include <stdio.h>
+#include <unistd.h>
 
 static void	push(t_stack *from, t_stack *to)
 {
@@ -39,11 +39,11 @@ static void	push(t_stack *from, t_stack *to)
 void	pa(t_stack *a, t_stack *b)
 {
 	push(b, a);
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }

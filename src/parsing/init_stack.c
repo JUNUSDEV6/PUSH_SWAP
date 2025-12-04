@@ -15,8 +15,6 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <stdio.h>
 
 static long	ft_atol(char *str)
 {
@@ -172,30 +170,3 @@ void    init_stack(t_stack  *stack, char **argv)
 	}
 }
 
-// Fonction de debug pour afficher la stack
-void	print_stack(t_stack *stack, char *name)
-{
-	t_node	*current;
-	
-	if (!stack || !name)
-		return ;
-	
-	printf("=== Stack %s (size: %d) ===\n", name, stack->size);
-	if (stack->size == 0)
-	{
-		printf("Stack vide\n");
-		return ;
-	}
-	
-	current = stack->top;
-	printf("Top -> ");
-	while (current)
-	{
-		printf("%d", current->value);
-		if (current->next)
-			printf(" -> ");
-		current = current->next;
-	}
-	printf(" <- Bottom\n");
-	printf("\n");
-}
