@@ -6,43 +6,16 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 19:03:16 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/09/26 19:46:51 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:26:49 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-#include <stdlib.h>
-#include <limits.h>
-#include <stdbool.h>
-#include <unistd.h>
-
-static long	ft_atol(char *str)
-{
-    long	rlt;
-	char	sign;
-
-	rlt = 0;
-	sign = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == 45 || *str == 43)
-	{
-		if (*str == 45)
-			sign = -1;
-		str++;
-	}
-	while (*str >= 48 && *str <= 57)
-	{
-		rlt = rlt * 10 + *str - 48;
-		str++;
-	}
-	return (rlt * sign);
-}
 
 static bool	is_valid_number(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!str || !str[0])
 		return (false);
@@ -63,11 +36,11 @@ static bool	is_valid_number(char *str)
 
 static bool	has_duplicates_in_args(char **argv)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	val1;
 	long	val2;
-	
+
 	i = 0;
 	while (argv[i])
 	{
@@ -89,7 +62,7 @@ static bool	validate_all_args(char **argv)
 {
 	int		i;
 	long	nb;
-	
+
 	if (!argv)
 		return (true);
 	i = 0;
@@ -100,30 +73,15 @@ static bool	validate_all_args(char **argv)
 		nb = ft_atol(argv[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			return (false);
-		
 		i++;
 	}
 	return (!has_duplicates_in_args(argv));
 }
 
-static void	set_stack(t_node *node, int nb)
-{
-	if (!node)
-		return ;
-	node->value = nb;
-	node->index = 0;
-	node->cost = 0;
-	node->target = 0;
-	node->above_median = false;
-	node->cheapest = false;
-	node->next = NULL;
-	node->prev = NULL;
-}
-
 static void	add_node(t_stack *stack, int nb)
 {
-	t_node  *new_node;
-	
+	t_node	*new_node;
+
 	if (!stack)
 		return ;
 	new_node = malloc(sizeof(t_node));
@@ -144,10 +102,10 @@ static void	add_node(t_stack *stack, int nb)
 	stack->size++;
 }
 
-void    init_stack(t_stack  *stack, char **argv)
+void	init_stack(t_stack *stack, char **argv)
 {
-	int     i;
-	long    nb;
+	int		i;
+	long	nb;
 
 	if (!stack)
 		return ;
@@ -169,4 +127,3 @@ void    init_stack(t_stack  *stack, char **argv)
 		i++;
 	}
 }
-

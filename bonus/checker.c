@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/04 16:12:18 by yohanafi          #+#    #+#             */
+/*   Updated: 2025/12/04 16:12:46 by yohanafi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 #include <string.h>
 
-static void error()
+static void	error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
@@ -35,7 +47,7 @@ static void	execute_operation(char *op, t_stack *a, t_stack *b)
 		error();
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
@@ -47,7 +59,7 @@ int main(int argc, char **argv)
 	else if (argc == 2 && !argv[1][0])
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv = ft_split(argv[1], ' ', 0, 0);
 	init_stack(&a, argv + 1);
 	init_stack(&b, NULL);
 	line = NULL;

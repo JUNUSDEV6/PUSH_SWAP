@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 15:27:23 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/11/12 15:38:17 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:41:51 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ long	ft_atol(char *str)
 	}
 	return (rlt * sign);
 }
-

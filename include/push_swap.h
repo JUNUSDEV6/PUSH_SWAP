@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:25:23 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/11/12 18:08:37 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:24:55 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,21 @@ typedef struct s_stack
 
 // UTILS
 bool	is_sorted(t_stack *stack);
-int	find_min(t_stack *stack);
-int	find_max(t_stack *stack);
-int	find_position(t_stack *stack, int value);
-char	**ft_split(char const *s, char c);
+int		find_min(t_stack *stack);
+int		find_max(t_stack *stack);
+int		find_position(t_stack *stack, int value);
+char	**ft_split(char const *s, char c, int i, int j);
+void	set_stack(t_node *node, int nb);
+long	ft_atol(char *str);
 
 // MAIN
 void	init_stack(t_stack *stack, char **argv);
 void	push_swap(t_stack *a, t_stack *b);
 void	sort_small(t_stack *a, t_stack *b);
 void	sort_big(t_stack *a, t_stack *b);
+void	assign_index(t_stack *stack);
+void	push_chunks_to_b(t_stack *a, t_stack *b, int i);
+int		find_best_target(t_stack *a, int b_value);
 
 // OPERATIONS
 void	sa(t_stack *a);

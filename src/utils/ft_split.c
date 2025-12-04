@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:45:00 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/09/26 19:44:55 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:09:52 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ static char	*extract_word(char const *s, int start, int end)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int i, int j)
 {
 	char	**result;
-	int		i;
-	int		j;
 	int		start;
 
 	if (!s)
@@ -65,8 +63,6 @@ char	**ft_split(char const *s, char c)
 	result = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!result)
 		return (NULL);
-	i = 0;
-	j = 0;
 	while (s[i])
 	{
 		while (s[i] == c)
