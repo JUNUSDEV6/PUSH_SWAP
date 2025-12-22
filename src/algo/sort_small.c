@@ -46,6 +46,8 @@ static void	sort_four(t_stack *a, t_stack *b)
 
 	min_val = find_min(a);
 	min_pos = find_position(a, min_val);
+	if (min_pos == -1)
+		return ;
 	if (min_pos <= a->size / 2)
 		while (a->top->value != min_val)
 			ra(a);

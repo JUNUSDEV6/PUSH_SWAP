@@ -46,7 +46,7 @@ int		find_max(t_stack *stack);
 int		find_position(t_stack *stack, int value);
 char	**ft_split(char const *s, char c, int i, int j);
 void	set_stack(t_node *node, int nb);
-long	ft_atol(char *str);
+long	ft_atol(char *str, char sign);
 
 // MAIN
 void	init_stack(t_stack *stack, char **argv);

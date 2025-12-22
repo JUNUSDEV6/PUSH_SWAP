@@ -44,11 +44,11 @@ static bool	has_duplicates_in_args(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		val1 = ft_atol(argv[i]);
+		val1 = ft_atol(argv[i], 1);
 		j = i + 1;
 		while (argv[j])
 		{
-			val2 = ft_atol(argv[j]);
+			val2 = ft_atol(argv[j], 1);
 			if (val1 == val2)
 				return (true);
 			j++;
@@ -70,7 +70,7 @@ static bool	validate_all_args(char **argv)
 	{
 		if (!is_valid_number(argv[i]))
 			return (false);
-		nb = ft_atol(argv[i]);
+		nb = ft_atol(argv[i], 1);
 		if (nb > INT_MAX || nb < INT_MIN)
 			return (false);
 		i++;
@@ -122,7 +122,7 @@ void	init_stack(t_stack *stack, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		nb = ft_atol(argv[i]);
+		nb = ft_atol(argv[i], 1);
 		add_node(stack, (int)nb);
 		i++;
 	}

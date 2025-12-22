@@ -26,13 +26,12 @@ void	set_stack(t_node *node, int nb)
 	node->prev = NULL;
 }
 
-long	ft_atol(char *str)
+long	ft_atol(char *str, char sign)
 {
 	long	rlt;
-	char	sign;
+	long	digit;
 
 	rlt = 0;
-	sign = 1;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == 45 || *str == 43)
@@ -43,7 +42,14 @@ long	ft_atol(char *str)
 	}
 	while (*str >= 48 && *str <= 57)
 	{
-		rlt = rlt * 10 + *str - 48;
+		digit = *str - 48;
+		if (sign == 1)
+			if (rlt > (INT_MAX - digit) / 10)
+				return (INT_MAX);
+		else
+			if (rlt > (-(INT_MIN) - digit) / 10)
+				return (INT_MIN);
+		rlt = rlt * 10 + digit;
 		str++;
 	}
 	return (rlt * sign);
