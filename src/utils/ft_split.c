@@ -53,6 +53,19 @@ static char	*extract_word(char const *s, int start, int end)
 	return (word);
 }
 
+static void	free_result_on_error(char **result, int j)
+{
+	int	i;
+
+	i = 0;
+	while (i < j)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+}
+
 char	**ft_split(char const *s, char c, int i, int j)
 {
 	char	**result;
@@ -73,6 +86,11 @@ char	**ft_split(char const *s, char c, int i, int j)
 			while (s[i] && s[i] != c)
 				i++;
 			result[j] = extract_word(s, start, i);
+			if (!result[j])
+			{
+				free_result_on_error(result, j);
+				return (NULL);
+			}
 			j++;
 		}
 	}

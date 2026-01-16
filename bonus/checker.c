@@ -47,29 +47,46 @@ static void	execute_operation(char *op, t_stack *a, t_stack *b)
 		error();
 }
 
-int	main(int argc, char **argv)
+static void	checker_and_free(t_stack *a, t_stack *b, char **argv, bool split)
 {
-	t_stack	a;
-	t_stack	b;
 	char	*line;
 	size_t	len;
 
-	if (argc == 1)
-		return (1);
-	else if (argc == 2 && !argv[1][0])
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ', 0, 0);
-	init_stack(&a, argv + 1);
-	init_stack(&b, NULL);
 	line = NULL;
 	len = 0;
 	while (getline(&line, &len, stdin) != -1)
-		execute_operation(line, &a, &b);
-	if (is_sorted(&a) && b.size == 0)
+		execute_operation(line, a, b);
+	if (is_sorted(a) && b->size == 0)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
 	free(line);
+	free_stack(a);
+	free_stack(b);
+	if (split)
+		free_split(argv);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+	bool	split_used;
+
+	split_used = false;
+	if (argc == 1)
+		return (1);
+	else if (argc == 2 && !argv[1][0])
+		return (1);
+	if (argc == 2)
+	{
+		argv = ft_split(argv[1], ' ', 0, 0);
+		split_used = true;
+		init_stack(&a, argv);
+	}
+	else
+		init_stack(&a, argv + 1);
+	init_stack(&b, NULL);
+	checker_and_free(&a, &b, argv, split_used);
 	return (0);
 }

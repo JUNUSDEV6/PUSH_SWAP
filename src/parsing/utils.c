@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 15:27:23 by yohanafi          #+#    #+#             */
-/*   Updated: 2025/12/04 15:41:51 by yohanafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 14:51:12 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ long	ft_atol(char *str, char sign)
 		digit = *str - 48;
 		if (sign == 1)
 			if (rlt > (INT_MAX - digit) / 10)
-				return (INT_MAX);
-		else
-			if (rlt > (-(INT_MIN) - digit) / 10)
-				return (INT_MIN);
+				return (LONG_MAX);
+		if (sign == -1)
+			if (rlt > (-(INT_MIN + digit)) / 10)
+				return (LONG_MIN);
 		rlt = rlt * 10 + digit;
 		str++;
 	}

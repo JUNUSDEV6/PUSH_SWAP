@@ -116,6 +116,7 @@ void	init_stack(t_stack *stack, char **argv)
 		return ;
 	if (!validate_all_args(argv))
 	{
+		free_stack(stack);
 		write(2, "Error\n", 6);
 		exit(1);
 	}

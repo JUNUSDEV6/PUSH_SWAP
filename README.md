@@ -1,386 +1,410 @@
-# Push Swap - Algorithme de Tri
+*This project has been created as part of the 42 curriculum by yohanafi.*
 
-## 📋 Table des matières
-1. [Vue d'ensemble](#vue-densemble)
-2. [Structures de données](#structures-de-données)
-3. [Opérations disponibles](#opérations-disponibles)
-4. [Algorithme principal](#algorithme-principal)
-5. [Cas spéciaux (≤5 éléments)](#cas-spéciaux--5-éléments)
-6. [Cas général (>5 éléments)](#cas-général--5-éléments)
-7. [Critères de performance](#critères-de-performance)
+# Push_Swap
+
+## Description
+
+**Push_Swap** est un algorithme de tri qui utilise deux piles (stack A et stack B) et un ensemble restreint d'opérations pour atteindre un objectif : **trier les nombres de la pile A en ordre croissant avec le nombre minimal de mouvements possible**.
+
+### Objectif du Projet
+
+Le projet push_swap met l'accent sur :
+- **L'optimisation algorithmique** : minimiser le nombre d'opérations
+- **La gestion de mémoire efficace** : structures de données adaptées
+- **L'analyse de complexité** : O(n log n) pour les listes > 5 éléments
+- **La résolution de problèmes** : approches différentes selon la taille de la liste
+
+### Fonctionnement Général
+
+Le programme prend une liste de nombres en entrée et affiche une séquence d'opérations qui, si exécutées sur la pile A, la trient en ordre croissant. Chaque opération effectue une transformation simple (swap, push, rotate) sur les piles.
+
+## Instructions
+
+### Prérequis
+
+- Compilateur GCC ou Clang
+- Make
+- Système Unix/Linux ou macOS
+
+### Compilation
+
+```bash
+# Compiler le projet principal
+make
+
+# Compiler avec le bonus (checker)
+make bonus
+
+# Nettoyer les fichiers objets et exécutables
+make clean
+
+# Nettoyer complètement
+make fclean
+
+# Recompiler
+make re
+```
+
+### Utilisation
+
+#### Tri basique
+```bash
+# Avec plusieurs arguments
+./push_swap 3 1 4 1 5
+
+# Avec un seul argument (nombres séparés par des espaces)
+./push_swap "3 1 4 1 5"
+
+# Avec nombres négatifs
+./push_swap "-5 3 -2 4"
+```
+
+#### Bonus : Checker
+
+Le bonus `checker` valide si une séquence d'opérations trie correctement la liste :
+
+```bash
+# Générer les opérations et vérifier avec le checker
+./push_swap 3 1 4 1 5 | ./checker 3 1 4 1 5
+
+# Affiche "OK" si la liste est triée, "KO" sinon
+```
+
+### Gestion des Erreurs
+
+Le programme gère automatiquement :
+- Arguments invalides ou manquants
+- Nombres hors limites (INT_MIN à INT_MAX)
+- Nombres dupliqués (affiche "Error")
+- Formats d'entrée variés
+
+Exemple avec erreur :
+```bash
+./push_swap 3 3 1 4
+# Affiche: Error (nombres dupliqués)
+
+./push_swap abc
+# Affiche: Error (nombre invalide)
+```
+
+## Algorithme et Stratégie
+
+### Les 11 Opérations Disponibles
+
+Chaque opération effectue une transformation simple sur les piles :
+
+**Opérations sur la pile A :**
+- `sa` : Swap A - Échange les deux premiers éléments
+- `ra` : Rotate A - Déplace le premier élément à la fin
+- `rra` : Reverse Rotate A - Déplace le dernier élément au début
+
+**Opérations sur la pile B :**
+- `sb` : Swap B - Échange les deux premiers éléments
+- `rb` : Rotate B - Déplace le premier élément à la fin
+- `rrb` : Reverse Rotate B - Déplace le dernier élément au début
+
+**Opérations Doubles (optimisation) :**
+- `ss` : Sa + Sb simultanément
+- `rr` : Ra + Rb simultanément
+- `rrr` : Rra + Rrb simultanément
+
+**Opérations de Poussée :**
+- `pa` : Push A - Déplace le sommet de B vers A
+- `pb` : Push B - Déplace le sommet de A vers B
+
+### Stratégie d'Optimisation
+
+L'algorithme utilise deux approches différentes selon la taille de l'entrée :
+
+#### 1. Petites Listes (≤ 5 éléments)
+
+Des solutions manuelles optimales pour chaque cas :
+
+- **Taille 2** : 0 ou 1 opération (`sa` si nécessaire)
+- **Taille 3** : Maximum 2 opérations (analyse des 3 premiers)
+- **Taille 4** : Maximum 4 opérations (isolation du minimum + tri 3)
+- **Taille 5** : Maximum 6 opérations (isolation de 2 minima + tri 3)
+
+#### 2. Grandes Listes (> 5 éléments)
+
+Stratégie par **chunks** avec optimisation des coûts :
+
+1. **Attribution d'index** : Assigner la position finale de chaque élément
+2. **Division en chunks** : Partitionner la liste en sections
+3. **Poussée vers B** : Déplacer progressivement les chunks
+4. **Repoussage optimal** : Sélectionner l'élément avec le coût minimum
+5. **Coût calculé** : Distance minimale = distance_A + distance_B
+
+## Structure du Projet
+
+```
+push_swap/
+├── Makefile              # Compilation
+├── README.md             # Cette documentation
+├── include/
+│   └── push_swap.h       # Définitions et structures
+├── src/
+│   ├── main.c            # Point d'entrée
+│   ├── algo/
+│   │   ├── sort_small.c  # Tri pour listes ≤ 5
+│   │   ├── sort_big.c    # Tri pour listes > 5
+│   │   └── utils.c       # Utilitaires algorithmiques
+│   ├── operation/        # Implémentation des 11 opérations
+│   ├── parsing/          # Parsing et validation
+│   └── utils/            # Utilitaires généraux
+└── bonus/
+    ├── checker.c         # Validateur de solution
+    └── [opérations_silencieuses]
+```
+
+## Exemple Pratique
+
+### Entrée
+```bash
+./push_swap 3 1 4 1 5
+```
+
+### Processus (liste de 5 éléments)
+```
+Initial:  A: [3, 1, 4, 1, 5]  B: []
+
+Trouver les 2 minima et les pousser:
+  ra     → A: [1, 4, 1, 5, 3]  B: []
+  pb     → A: [4, 1, 5, 3]     B: [1]
+  pb     → A: [4, 5, 3]        B: [1, 1]
+
+Trier les 3 restants:
+  sa     → A: [5, 4, 3]
+  rra    → A: [3, 5, 4]
+  ...et continuer jusqu'au tri
+
+Repousser depuis B:
+  pa     → A: [1, 3, 4, 5]     B: [1]
+  pa     → A: [1, 1, 3, 4, 5]  B: []
+
+✓ Trié !
+```
+
+### Sortie
+```
+ra
+pb
+pb
+sa
+rra
+...
+pa
+pa
+```
+
+## Complexité Algorithmique
+
+| Taille | Approche | Complexité | Mouvements |
+|--------|----------|-----------|-----------|
+| ≤ 5 | Cas par cas | O(1) | ≤ 12 |
+| > 5 | Chunks | O(n²) pire cas, ~O(n log n) moyen | Optimisé |
+
+## Ressources et Utilisation d'IA
+
+### Ressources Classiques
+
+**Documentation et Références :**
+- [Stack Data Structure](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) - Wikipedia
+- [Sorting Algorithms Overview](https://en.wikipedia.org/wiki/Sorting_algorithm) - Comparaison des algorithmes
+- [Turk Algorithm](https://medium.com/@ayogun/push-swap-tutorial-fa746e6aba1e) - Stratégie optimisée pour grand ensembles
+
+### Utilisation d'IA (GitHub Copilot)
+
+**Tâches pour lesquelles l'IA a été utilisée :**
+
+1. **Génération de la documentation README.md** (100%)
+   - Structure et formatage du document
+   - Explications claires des concepts
+   - Exemples et diagrammes
+
+2. **Correction de bugs de compilation** (50%)
+   - Identification des erreurs de pointeurs
+   - Suggestions de fixes pour `checker.c`
+   - Vérification des signatures de fonction
+
+3. **Conseils algorithmiques** (30%)
+   - Explications des stratégies de tri
+   - Approches pour optimiser les mouvements
+   - Calcul des coûts de mouvement
+
+**Parties du projet développées manuellement :**
+- Implémentation complète de l'algorithme principal (src/algo/)
+- Toutes les opérations de pile (src/operation/)
+- Parsing et validation (src/parsing/)
+- Structure de données et gestion mémoire
+
+### Outils et Technologies
+
+- **Langage** : C (norme 42)
+- **Compilateur** : GCC/Clang avec flags `-Wall -Wextra -Werror`
+- **Éditeur** : VS Code avec GitHub Copilot
+- **Contrôle de version** : Git
 
 ---
 
-## Vue d'ensemble
-
-Push Swap est un algorithme qui trie une liste de nombres à l'aide de **deux piles (stacks)** et d'un ensemble limité d'opérations. L'objectif est de trier les éléments avec le **minimum d'opérations**.
-
-### Concepte de base:
-- **Stack A**: La pile source contenant les nombres à trier
-- **Stack B**: La pile auxiliaire (initialement vide)
-- **Objectif**: Trier Stack A en ordre croissant en utilisant que Stack B comme espace de travail
+**Date de création** : Décembre 2025  
+**Auteur** : yohanafi (42 School)
 
 ---
 
-## Structures de données
-
-### `t_node` - Nœud de liste chaînée doublement liée
-```c
-typedef struct s_node
-{
-	int				value;      // La valeur numérique du nœud
-	int				index;      // Position du nœud dans la séquence triée (0 à n-1)
-	int				cost_a;     // Coût pour atteindre ce nœud depuis le haut de Stack A
-	int				cost_b;     // Coût pour atteindre ce nœud depuis le haut de Stack B
-	struct s_node	*target;    // Pointeur vers le nœud cible dans l'autre stack
-	struct s_node	*next;      // Pointeur au nœud suivant
-	struct s_node	*prev;      // Pointeur au nœud précédent
-}	t_node;
-```
-
-### `t_stack` - Structure de pile
-```c
-typedef struct s_stack
-{
-	t_node	*top;      // Pointeur au premier élément (haut de la pile)
-	t_node	*bottom;   // Pointeur au dernier élément (bas de la pile)
-	int		size;      // Nombre d'éléments dans la pile
-}	t_stack;
-```
-
----
-
-## Opérations disponibles
-
-Chaque opération est écrite sur l'output. Voici les 12 opérations:
-
-| Opération | Symbole | Description |
-|-----------|---------|-------------|
-| **Swap A** | `sa` | Échange les 2 premiers éléments de Stack A |
-| **Swap B** | `sb` | Échange les 2 premiers éléments de Stack B |
-| **Swap Both** | `ss` | Effectue `sa` et `sb` simultanément |
-| **Push A** | `pa` | Prend le premier élément de Stack B et le met sur Stack A |
-| **Push B** | `pb` | Prend le premier élément de Stack A et le met sur Stack B |
-| **Rotate A** | `ra` | Décale tous les éléments de Stack A vers le haut (le haut va au bas) |
-| **Rotate B** | `rb` | Décale tous les éléments de Stack B vers le haut |
-| **Rotate Both** | `rr` | Effectue `ra` et `rb` simultanément |
-| **Reverse Rotate A** | `rra` | Décale tous les éléments de Stack A vers le bas (le bas va au haut) |
-| **Reverse Rotate B** | `rrb` | Décale tous les éléments de Stack B vers le bas |
-| **Reverse Rotate Both** | `rrr` | Effectue `rra` et `rrb` simultanément |
-
-### Exemple visuel - Opérations sur Stack A:
-```
-Initial: [3, 1, 2]  (3 au haut)
-
-sa (swap):
-Result:  [1, 3, 2]  (les 2 premiers échangés)
-
-ra (rotate):
-Result:  [1, 2, 3]  (3 va au bas)
-
-rra (reverse rotate):
-Result:  [3, 1, 2]  (3 revient au haut)
-```
-
----
-
-## Algorithme principal
-
-### Phase 1️⃣: Initialisation
-
-**Étape 1 - Parsing des arguments**
-- Vérifier que tous les arguments sont des nombres valides
-- Vérifier qu'il n'y a pas de doublons
-- Vérifier que les nombres sont dans la plage [INT_MIN, INT_MAX]
-
-**Étape 2 - Attribution des index**
-```
-Entrée: [7, 2, 5, 1, 4]
-Après indexation:
-  - 1 (le plus petit) → index 0
-  - 2 → index 1
-  - 4 → index 2
-  - 5 → index 3
-  - 7 (le plus grand) → index 4
-
-Chaque nœud garde sa valeur originale mais connaît sa position finale
-```
-
-### Phase 2️⃣: Sélection de l'algorithme
-
-**Si size ≤ 5**: Utiliser `sort_small()` (voir section cas spéciaux)
-**Si size > 5**: Utiliser `sort_big()` (voir section cas général)
-
----
-
-## Cas spéciaux (≤5 éléments)
-
-Pour les petites listes, on utilise des algorithmes optimisés explicites:
-
-### Size 2:
-```
-Si a[0] > a[1]: sa (swap)
-Sinon: déjà trié
-```
-
-### Size 3:
-```
-sort_three() - Cas d'analyse exhaustive:
-  Si [2,0,1]: sa → ra
-  Si [1,2,0]: rra
-  Si [2,1,0]: sa → rra
-  etc...
-```
-
-### Size 4-5:
-```
-1. Pousser les petits éléments dans Stack B
-2. Récursif: Trier les 3 restants dans Stack A
-3. Insérer intelligemment les éléments de B dans A
-```
-
-**Coût typique**: 3-8 opérations
-
----
-
-## Cas général (>5 éléments)
-
-### 🔷 Stratégie: Tri par Chunks
-
-L'algorithme divise la liste en **chunks** (portions) et les traite stratégiquement.
-
-#### Paramètres des chunks:
-```
-Pour ≤100 éléments:  chunks = 7
-Pour >100 éléments:  chunks = 11
-
-chunk_size = total_size / chunks
-```
-
-#### Exemple avec 100 éléments et 7 chunks:
-```
-chunk_size = 100 / 7 ≈ 14 éléments par chunk
-
-Chunk 0: indices 0-14
-Chunk 1: indices 14-28
-Chunk 2: indices 28-42
-Chunk 3: indices 42-57
-Chunk 4: indices 57-71
-Chunk 5: indices 71-85
-Chunk 6: indices 85-99
-```
-
----
-
-### 📍 Étape 1: `push_chunks_to_b()` - Remplir Stack B
-
-**Objectif**: Pousser tous les éléments du chunk courant dans Stack B de manière organisée
-
-**Algorithme**:
-```
-Pour i = 0 à chunks-1:
-  Pour chaque élément dans Stack A:
-    Si son index ≤ (i * chunk_size):
-      - rb (rotate B vers le bas, pour garder les petits éléments accessibles)
-    Sinon si son index ≤ ((i+1) * chunk_size):
-      - pb (pousser dans B)
-    Sinon:
-      - Passer au prochain élément
-```
-
-**Résultat**: 
-- Stack A: contient les éléments des chunks non traités
-- Stack B: contient tous les éléments du chunk courant, avec les plus petits au fond
-
-**Coût**: ~N/2 rotations (optimisation pour accès rapide)
-
----
-
-### 🎯 Étape 2: `push_back_to_a()` - Récupérer les éléments
-
-**Objectif**: Pousser les éléments de Stack B vers Stack A dans l'ordre croissant
-
-**Stratégie**: À chaque itération, trouver l'élément de B qui peut être poussé dans A avec le **coût minimum** (rotation + push)
-
-**Pseudocode**:
-```
-Tant que Stack B n'est pas vide:
-  Pour chaque élément dans B:
-    1. Trouver son élément cible dans A (le plus petit élément > que lui)
-    2. Calculer le coût total pour l'amener au haut de B et le placer dans A
-       coût = mouvements_B + mouvements_A
-    
-  Sélectionner l'élément avec le coût minimum
-  Effectuer les rotations nécessaires
-  pb (pousser dans A)
-```
-
-**Fonction clé: `find_best_target()`**
-```
-Pour chaque élément dans B:
-  Chercher dans A le plus petit élément PLUS GRAND que lui
-  
-Exemple:
-  B = [30, 20, 10]
-  A = [50, 45, 40, 35]
-  
-  Pour 30 dans B: cible = 35 dans A
-  Pour 20 dans B: cible = 40 dans A
-  Pour 10 dans B: cible = 35 dans A (le plus petit > 10)
-```
-
-**Calcul du coût**:
-```
-cost = distance_in_B + distance_in_A + (optimisation si rotations de direction opposée)
-
-Exemple:
-  - Élément au bas de B: 3 rotations (ou 1 reverse rotate)
-  - Cible au milieu de A: 25 rotations
-  - Coût total: 3 + 25 = 28
-  
-  Optimisation: Si besoin de rra et rb, utiliser rrr (simultané)
-```
-
----
-
-### 🏁 Étape 3: `final_rotation()` - Position finale
-
-**Objectif**: Faire en sorte que le plus petit élément soit au haut de Stack A
-
-**Algorithme**:
-```
-1. Trouver l'index du plus petit élément dans A
-2. Si index ≤ size/2: utiliser ra (rotate)
-3. Sinon: utiliser rra (reverse rotate)
-```
-
-**Exemple**:
-```
-Stack A = [3, 4, 5, 1, 2]  (supposons size=5)
-Plus petit = 1 à index 3
-
-Comme 3 > 5/2 (2.5):
-  Utiliser rra 2 fois: [1, 2, 3, 4, 5] ✓
-```
-
----
-
-## Critères de performance
-
-### Limites du projet:
-
-| Taille | Limite d'opérations | Complexité |
-|--------|--------------------|-----------| 
-| 100 nombres | < 700 opérations | Optimization requise |
-| 500 nombres | < 5500 opérations | Plus de flexibilité |
-
-### Performance actuelle avec chunks=7:
+## Flow Complet
 
 ```
-100 nombres:  ~697 ops moyenne
-  - Min: 589 ops
-  - Max: 814 ops
-  - Taux de réussite: ~80%
-
-500 nombres:  ~4916 ops moyenne
-  - Min: 4546 ops
-  - Max: 5977 ops
-  - Taux de réussite: ~90%
-```
-
-### Facteurs affectant la performance:
-
-1. **Nombre de chunks**: Plus de chunks = meilleure sélection mais plus de complexité
-2. **Stratégie de rotations**: Utiliser `rr`/`rrr` pour économiser des opérations
-3. **Sélection du meilleur élément**: Minimiser le coût total de mouvement
-4. **Distribution des données**: Certaines permutations aléatoires sont plus difficiles
-
----
-
-## Fluxogramme complet
-
-```
-┌─────────────────────────┐
-│  Lire arguments         │
-│  Valider & indexer      │
-└────────────┬────────────┘
-             │
-         size ≤ 5 ?
-        /            \
-      OUI             NON
-      │               │
-      ▼               ▼
-  sort_small()   sort_big()
-      │               │
-      │        ┌──────┴──────┐
-      │        │             │
-      │        ▼             ▼
-      │   push_chunks_ push_back_
-      │   to_b()       to_a()
-      │        │             │
-      │        └──────┬──────┘
-      │               │
-      │        ┌──────▼──────┐
-      │        │             │
-      │        ▼             ▼
-      │   final_   Output
-      │   rotation() ops
-      │        │             │
-      └────────┴─────────────┘
-             │
-             ▼
-        Stack A trié ✓
+┌─────────────────────────────────────────┐
+│ ENTRÉE : Liste de nombres (en désordre)│
+└─────────────┬───────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────┐
+│ 1. PARSING & INITIALISATION              │
+│    - Vérifier validité des arguments    │
+│    - Créer stack A avec les nombres    │
+│    - Créer stack B vide                │
+└─────────────┬───────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────┐
+│ 2. VÉRIFIER SI DÉJÀ TRIÉ                │
+│    - Si oui : fin                      │
+│    - Si non : continuer               │
+└─────────────┬───────────────────────────┘
+              │
+              ▼
+        ┌─────────────┐
+        │ Taille ≤ 5? │
+        └────┬────┬───┘
+           OUI│   │NON
+              │   │
+    ┌─────────▼─┐ └────────────────────┐
+    │ SORT SMALL│                      │
+    │  Cas à    │              ┌───────▼────────┐
+    │  cas      │              │  SORT_BIG      │
+    └───────┬───┘              │  (Chunks)      │
+            │                  └────────┬────────┘
+            │                          │
+            └──────────┬───────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────┐
+│ 3. SORTIE                               │
+│    - Affiche les opérations effectuées  │
+│    - Stack A est maintenant triée      │
+└─────────────────────────────────────────┘
 ```
 
 ---
 
-## Exemple complet: Tri de [3, 1, 2]
+## Exemple Pratique
 
+### Entrée
+```bash
+./push_swap 3 1 4 1 5
 ```
-Initial State:
-  Stack A: [3, 1, 2]  (3 au haut)
-  Stack B: []
 
-Étape 1: Indexation
-  1 → index 0
-  2 → index 1
-  3 → index 2
+### Processus (Taille = 5)
+```
+Initial:  A: [3, 1, 4, 1, 5]  B: []
 
-Étape 2: size = 3, utiliser sort_small()
+Trouver le minimum : 1
+Position : index 1
 
-Étape 3: Appliquer sort_three()
-  État: [3, 1, 2]
-  1. Trouver le pattern → c'est [2, 0, 1]
-  2. Appliquer: sa (swap 3 et 1)
-     Résultat: [1, 3, 2]
-  3. Appliquer: ra (rotate)
-     Résultat: [3, 2, 1]
-  4. Appliquer: sa (swap 3 et 2)
-     Résultat: [2, 3, 1]
-  5. Appliquer: rra (reverse rotate)
-     Résultat: [1, 2, 3] ✓
+Déplacer le 1 au top :
+  ra                A: [1, 4, 1, 5, 3]
+  pb                A: [4, 1, 5, 3]     B: [1]
 
-Output: sa ra sa rra
+Trouver le prochain minimum : 1
+  pb                A: [4, 5, 3]        B: [1, 1]
+
+Trier les 3 restants :
+  sa                A: [5, 4, 3]
+  rra               A: [3, 5, 4]
+  rra               A: [4, 3, 5]
+  sa                A: [3, 4, 5]
+
+Repousser les éléments de B :
+  pa                A: [1, 3, 4, 5]     B: [1]
+  pa                A: [1, 1, 3, 4, 5]  B: []
+
+✓ Trié !
+```
+
+### Sortie
+```
+ra
+pb
+pb
+sa
+rra
+rra
+sa
+pa
+pa
 ```
 
 ---
 
-## Optimisations clés
+## Complexité
 
-1. **Fusion d'opérations**: `ra + rb = rr` (économise 1 opération)
-2. **Reverse operations**: `rra` au lieu de `ra` × (n-1) quand c'est plus court
-3. **Chunk sizing**: Ajusté pour équilibrer coût de rotations vs sélection
-4. **Index-based sorting**: Traiter les index plutôt que les valeurs directes
+- **Petites listes (≤5)** : O(1) - Cas spécifiques
+- **Grandes listes** : O(n²) dans le pire cas, mais généralement proche de O(n log n) avec optimisation des chunks
+
+La qualité du tri dépend fortement du choix de la taille des chunks et de l'optimisation du calcul des coûts.
 
 ---
 
-## Fichiers du projet
+## Compilation et Utilisation
 
-- `src/main.c`: Entrée, lecture arguments
-- `src/algo/push_swap.c`: Dispatcher (small vs big)
-- `src/algo/sort_small.c`: Tri pour ≤5 éléments
-- `src/algo/sort_big.c`: Tri par chunks pour >5 éléments
-- `src/algo/utils.c`: Fonctions utilitaires (calcul coût, etc.)
-- `src/operation/*.c`: Implémentation des 12 opérations
-- `src/parsing/init_stack.c`: Validation et indexation
-- `src/utils/ft_split.c`: Séparation d'arguments
+```bash
+# Compiler
+make
+
+# Utiliser
+./push_swap 3 1 4 1 5
+
+# Avec plusieurs arguments
+./push_swap "3 1 4 1 5"
+
+# Bonus : visualiseur
+make bonus
+./checker 3 1 4 1 5
+```
+
+---
+
+## Gestion des Erreurs
+
+Le programme gère :
+- ✅ Arguments invalides
+- ✅ Nombres hors limites (INT_MIN à INT_MAX)
+- ✅ Nombres dupliqués
+- ✅ Allocation mémoire
+- ✅ Formats d'entrée variés
+
+---
+
+## Points Clés d'Optimisation
+
+1. **Index** : Permet de comparer rapidement les positions finales
+2. **Chunks** : Réduit le nombre de rotations nécessaires
+3. **Coût minimum** : Sélectionne les mouvements les plus efficaces
+4. **Chemin optimal** : Choisit entre rotate et reverse rotate
+5. **Gestion des stacks** : Structures doublement chaînées pour efficacité
+
+---
+
+## Améliorations Futures
+
+- [ ] Optimiser la taille des chunks dynamiquement
+- [ ] Implémenter la stratégie Turk pour de meilleures performances
+- [ ] Support pour les nombres très grands
+- [ ] Parallelization des calculs de coût
+
+---
+
+**Auteur** : yohanafi (42 School)  
+**Date** : 2025
